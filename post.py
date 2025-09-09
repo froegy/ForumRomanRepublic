@@ -35,6 +35,10 @@ class Post(Base):
     self.content = content
     self.author = author.get_id()
   
+  def get_id(self):
+    return self.id
+
+
   def get_author(self):
     """
     Returns the author of the post (user object)
@@ -76,3 +80,10 @@ class Post(Base):
     else:
       PostUpvotes(self.id, by_user)
       return "Successfully upvoted the post"
+
+
+if __name__ == '__main__':
+  caesar = User('caesar@rome.com', 'venividivici7', 'Julius', 'Caesar', 1, 7, 12)
+  first_post = Post('Veni, vidi, vici!', caesar)
+
+  print(first_post)

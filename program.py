@@ -24,7 +24,7 @@ if __name__ == '__main__':
   cleopatra = User('cleopatra@pharaoh.com', 'nile379%', 'Cleopatra', 'Philopator', 32, 1, 1) #added 101 to age to keep relative ages
   brutus = User('brutus@rome.com', 'etmoibrute11', 'Marcus', 'Brutus', 16, 1, 1) #added 101 to age to keep relative ages
   session.add_all([caesar, cleopatra, brutus])
-  session.flush()
+  session.commit()
 
   #re-make users to get ids and stuff
   caesar = session.query(User).filter_by(lname="Caesar").first()
@@ -32,11 +32,11 @@ if __name__ == '__main__':
   brutus = session.query(User).filter_by(lname='Brutus').first()
   first_post = Post('Veni, vidi, vici!', caesar)
   session.add(first_post)
-  session.flush()
+  session.commit()
 
   thread = forum.publish('Battle of Zela', first_post, caesar)
   session.add(thread)
-  session.flush()
+  session.commit()
   thread.set_tags(['battle', 'brag'], caesar)
 
   thread.publish_post(first_post, session)
