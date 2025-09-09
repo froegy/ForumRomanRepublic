@@ -15,7 +15,7 @@ from base import Base
 if __name__ == '__main__':
   # Test your code here. This will not be checked by the marker.
   # Here is the example from the question.
-  engine = create_engine("sqlite:///forum.db")
+  engine = create_engine("sqlite:///forum.db", echo=True)
   Session = sessionmaker(bind=engine)
   session = Session()
   Base.metadata.create_all(engine)
@@ -34,6 +34,8 @@ if __name__ == '__main__':
   session.add(first_post)
   session.commit()
 
+  print(caesar)
+  print(type(caesar))
   thread = forum.publish('Battle of Zela', first_post, caesar)
   session.add(thread)
   session.commit()

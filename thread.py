@@ -26,7 +26,7 @@ class Thread(Base):
   def __init__(self, title, first_post):
     self.title = title
     self.first_post = first_post.id
-    self.owner = first_post.get_author()
+    self.owner = first_post.get_author().get_id()
 
   def get_owner(self):
     """
